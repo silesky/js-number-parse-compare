@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import './App.css';
+import initialEvalList from './data';
 
 class App extends Component {
+  state = { evalsList: initialEvalList }
   render() {
     return (
       <div className="container">
-        <Table />
+        <Table evalsList={this.state.evalsList} />
       </div>
     );
   }
@@ -20,11 +22,11 @@ const objToString = obj =>
       return acc;
     }, {});
 
-const Table = ({ evalsList = [1, 2, 3]}) => {
+const Table = ({ evalsList }) => {
   const createEvaluations = (nums) => {
     return nums.map(eachNum => {
       return objToString({
-         evaluee: eachNum,
+        evaluee: eachNum,
         _parseInt: parseInt(eachNum, 10),
         _parseFloat: parseFloat(eachNum),
         _Number: Number(eachNum),
@@ -39,7 +41,7 @@ const Table = ({ evalsList = [1, 2, 3]}) => {
     <table className="table">
       <thead>
         <tr>
-          <th style={{color: 'red'}}>X</th>
+          <th style={{ color: 'red' }}>X</th>
           <th>parseInt(x)</th>
           <th>parseFloat(x)</th>
           <th>Number(x)</th>
@@ -49,8 +51,7 @@ const Table = ({ evalsList = [1, 2, 3]}) => {
         </tr>
       </thead>
       <tbody>
-        {evaluations.map(
-          ({
+        {evaluations.map(({
             evaluee,
             _parseInt,
             _parseFloat,
@@ -61,7 +62,7 @@ const Table = ({ evalsList = [1, 2, 3]}) => {
           }) => {
             return (
               <tr key={evaluee}>
-                <td style={{color: 'red'}}>{evaluee}</td>
+                <td style={{ color: 'red' }}>{evaluee}</td>
                 <td>{_parseInt}</td>
                 <td>{_parseFloat}</td>
                 <td>{_Number}</td>
@@ -70,8 +71,7 @@ const Table = ({ evalsList = [1, 2, 3]}) => {
                 <td>{_bar}</td>
               </tr>
             );
-          },
-        )}
+          } )}
       </tbody>
     </table>
   );

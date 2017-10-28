@@ -1,7 +1,7 @@
 .container {
   margin: auto;
-  max-width: 85vw;
-  background-color: grey;
+  max-width: 95vw;
+  height: 100vh;
 }
 .table {
   border-collapse: collapse;
