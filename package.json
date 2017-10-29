@@ -22,5 +22,5 @@
     "eject": "react-scripts eject",
     "deploy": "npm run build && sh deploy.sh build"
   },
-  "homepage": "http://sethsilesky.com/js-number-compare/"
+  "homepage": "http://sethsilesky.com/js-number-parse-compare/"
 }
