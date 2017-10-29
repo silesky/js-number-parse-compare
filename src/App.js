@@ -2,17 +2,30 @@ import React, { Component } from 'react';
 import './App.css';
 import initialEvalList from './data';
 
-class App extends Component {
-  state = { evalsList: initialEvalList };
+// const escapeQuotes = (str) => (`${str}`).replace(/[\\"']/g, '\\$&').replace(/\u0000/g, '\\0');
 
-  handleChange = ({ target: { value } }) => {
-    console.log(value);
+class App extends Component {
+  state = {
+    evalsList: initialEvalList,
+    input: '',
+  };
+
+  handleChange = ({ target: { value: textInput } }) => {
+    this.setState(() => ({ input: textInput }));
+  };
+  handleSubmit = (e) => {
+    e.preventDefault(); // so page does not reload, but we want the enter button to work.
+    this.setState(({ evalsList, input }) => ({
+      evalsList: [[`'${input}'`, input], ...evalsList],
+    }));
   };
   render() {
     return (
       <div className="container">
-        <input onChange={this.handleChange} type="text" />
-        <button>Submit</button>
+        <form onSubmit={this.handleSubmit}>
+          <input onChange={this.handleChange} type="text" />
+          <button type="submit">Submit</button>
+        </form>
         <Table evalsList={this.state.evalsList} />
       </div>
     );
@@ -67,7 +80,7 @@ const Table = ({ evalsList }) => {
             _bitwise,
           }) => {
             return (
-              <tr key={evaluee}>
+              <tr key={`${evaluee}${Math.random()}`}>
                 <td>{evaluee}</td>
                 <td>{_parseInt}</td>
                 <td>{_parseFloat}</td>
