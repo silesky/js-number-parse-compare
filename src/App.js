@@ -20,8 +20,8 @@ class App extends Component {
 }
 
 const objToString = obj =>
-  Object.values(obj)
-    .map(eachVal => [eachVal].toString())
+  Object.values(obj) // convert results -> string b4 displaying.
+    .map(eachEvalResult => [eachEvalResult].toString())
     .reduce((acc, cur, i) => {
       const keyName = Object.keys(obj)[i];
       acc[keyName] = cur;
@@ -47,7 +47,7 @@ const Table = ({ evalsList }) => {
     <table className="table">
       <thead>
         <tr>
-          <th style={{ color: 'red' }}>X</th>
+          <th>X</th>
           <th>parseInt(x)</th>
           <th>parseFloat(x)</th>
           <th>Number(x)</th>
@@ -68,7 +68,7 @@ const Table = ({ evalsList }) => {
           }) => {
             return (
               <tr key={evaluee}>
-                <td style={{ color: 'red' }}>{evaluee}</td>
+                <td>{evaluee}</td>
                 <td>{_parseInt}</td>
                 <td>{_parseFloat}</td>
                 <td>{_Number}</td>

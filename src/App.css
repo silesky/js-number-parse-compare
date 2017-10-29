@@ -3,6 +3,7 @@
   max-width: 95vw;
   height: 100vh;
 }
+
 .table {
   border-collapse: collapse;
   margin: auto;
@@ -16,6 +17,10 @@ tbody tr:nth-child(odd) {
 
 th, td {
 
+}
+
+td:first-child, th:first-child {
+  color: red;
 }
 
 td {
