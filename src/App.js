@@ -3,10 +3,16 @@ import './App.css';
 import initialEvalList from './data';
 
 class App extends Component {
-  state = { evalsList: initialEvalList }
+  state = { evalsList: initialEvalList };
+
+  handleChange = ({ target: { value } }) => {
+    console.log(value);
+  };
   render() {
     return (
       <div className="container">
+        <input onChange={this.handleChange} type="text" />
+        <button>Submit</button>
         <Table evalsList={this.state.evalsList} />
       </div>
     );
@@ -23,11 +29,11 @@ const objToString = obj =>
     }, {});
 
 const Table = ({ evalsList }) => {
-  const createEvaluations = (nums) => {
+  const createEvaluations = nums => {
     return nums.map(([label, value]) => {
       return objToString({
         evaluee: label,
-        _parseInt: parseInt(value, 10),
+        _parseInt: parseInt(value),
         _parseFloat: parseFloat(value),
         _Number: Number(value),
         _unary: +value,

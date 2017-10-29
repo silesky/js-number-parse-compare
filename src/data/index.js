@@ -27,11 +27,12 @@ export default [
   ["'+Infinity'", '+Infinity'],
   ["'-Infinity'", '-Infinity'],
   ['null', null],
-  ['[].undef', [].undef],
+  ['[]', []],
   ['true', true],
   ['false', false],
   ['NaN', NaN],
   ['{}', {}],
+  ['undefined', undefined],
   ['{valueOf: () => 42}', { valueOf: () => 42 }],
   ['{toString: () => 56}', { toString: () => 56 }],
 ];

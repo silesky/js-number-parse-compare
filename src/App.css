@@ -9,9 +9,15 @@
   text-align: center;
   width: 50vw;
 }
+
+tbody tr:nth-child(odd) {
+  background-color: #353434; /* zebra stripes */
+}
+
 th, td {
 
 }
+
 td {
   border: 0.25px solid white;
 }
