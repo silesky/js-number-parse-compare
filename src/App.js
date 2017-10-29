@@ -24,15 +24,15 @@ const objToString = obj =>
 
 const Table = ({ evalsList }) => {
   const createEvaluations = (nums) => {
-    return nums.map(eachNum => {
+    return nums.map(([label, value]) => {
       return objToString({
-        evaluee: eachNum,
-        _parseInt: parseInt(eachNum, 10),
-        _parseFloat: parseFloat(eachNum),
-        _Number: Number(eachNum),
-        _Unary: +eachNum,
-        _foo: --eachNum,
-        _bar: eachNum >>> 0,
+        evaluee: label,
+        _parseInt: parseInt(value, 10),
+        _parseFloat: parseFloat(value),
+        _Number: Number(value),
+        _unary: +value,
+        _unaryMinus: --value,
+        _bitwise: value >>> 0,
       });
     });
   };
@@ -47,7 +47,7 @@ const Table = ({ evalsList }) => {
           <th>Number(x)</th>
           <th>+x</th>
           <th>--x</th>
-          <th>${'x>>>0'}</th>
+          <th>x>>>0</th>
         </tr>
       </thead>
       <tbody>
@@ -56,9 +56,9 @@ const Table = ({ evalsList }) => {
             _parseInt,
             _parseFloat,
             _Number,
-            _Unary,
-            _foo,
-            _bar,
+            _unary,
+            _unaryMinus,
+            _bitwise,
           }) => {
             return (
               <tr key={evaluee}>
@@ -66,12 +66,12 @@ const Table = ({ evalsList }) => {
                 <td>{_parseInt}</td>
                 <td>{_parseFloat}</td>
                 <td>{_Number}</td>
-                <td>{_Unary}</td>
-                <td>{_foo}</td>
-                <td>{_bar}</td>
+                <td>{_unary}</td>
+                <td>{_unaryMinus}</td>
+                <td>{_bitwise}</td>
               </tr>
             );
-          } )}
+          })}
       </tbody>
     </table>
   );
