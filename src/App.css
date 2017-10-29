@@ -26,3 +26,20 @@ td:first-child, th:first-child {
 td {
   border: 0.25px solid white;
 }
+.input-container {
+  margin: auto;
+  padding: 25px;
+  width: 200px;
+
+}
+.input {
+  position: relative;
+  background-color: #454545;
+  font-family: inherit;
+  width: 20em;
+  line-height: 1.25em;
+  font-size: medium;
+  color: white;
+  border: 1px solid white;
+}
+
